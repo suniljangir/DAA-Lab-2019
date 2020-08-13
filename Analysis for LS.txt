@@ -1,0 +1,13 @@
+Analysis:-
+Case 1 : Best case :
+The key elements is found at first position.
+       T(n) = (1)
+
+Case 2 : Worst case : 
+The key elements is not founnd in the list.
+        T(n) = n+1
+               =(n)
+
+Case 3 : Average case :
+The key element can be found at any location
+          T(n)=(n)
