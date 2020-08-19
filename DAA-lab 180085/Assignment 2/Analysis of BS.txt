@@ -1,0 +1,8 @@
+Best case:
+     T(n) = omega(1)
+
+Worst case:
+     T(n) = bigO(logn)
+
+Average case:
+      T(n) = theta(logn)
