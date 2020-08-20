@@ -1,0 +1,42 @@
+ #include<stdio.h>
+ #include<stdlib.h>
+ #include<conio.h>
+ void main()
+ {
+	int a[5];
+	int i,l,u,flag=0,mid,key;
+	clrscr();
+	printf("\n Enter the numbers:");
+	for(i=1;i<=5;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	l=1;
+	u=5;
+	printf("\n Enter the key element to search:");
+	scanf("%d",&key);
+	A: if((flag==0) && (l<=u))
+	{
+		mid=((l+u)/2);
+		if(key==a[mid])
+		{
+			printf("%d found at location %d",a[mid],mid);
+			flag=1;
+		}
+	else if(key<a[mid])
+	{
+		u=mid-1;
+	}
+	else
+	{
+
+		l=mid+1;
+	}
+	goto A;
+	}
+	if(flag==0)
+	{
+	 printf("\n Unsuccessful");
+	}
+	getch();
+ }
