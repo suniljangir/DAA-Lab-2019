@@ -1,0 +1,47 @@
+//linear search
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+# define MAX 50
+void main(){
+ int i,x,t,n,found=0,a[MAX];
+ int io;
+ clrscr();
+ printf("\nEnter the size of an array");
+ io=scanf("%d",&n);
+ if(io!=1||n<0){
+  printf("\nInvalid input");
+  getch();
+  exit(0);
+ }
+ else{
+  printf("\nEnter the elements of an array");
+   for(i=0;i<n;i++){
+    scanf("%d",&a[i]);
+  }
+ do{
+ i=0;
+ printf("\nEnter the element to search");
+ scanf("%d",&x);
+ while(i<=n){
+  if(a[i]==x){
+    found=1;
+    t=i;
+    break;
+  }
+  else{
+   i=i+1;
+  }
+ }
+ if(found==0){
+  printf("\nSearch unsucessful");
+  exit(0);
+ }
+ else{
+  printf("\n%d element found at %d position",x,t);
+  exit(0);
+ }
+ }
+ while(1);
+ }
+ }
