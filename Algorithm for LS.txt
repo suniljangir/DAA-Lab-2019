@@ -1,0 +1,22 @@
+input : A[L....U] and key element to be searched.
+output : Location / successful / unsucessful.
+Data structure : A[L.....U]
+
+Step 1 : i=L
+Step 2 : while(i<=u) do
+Step 3 : If (A[i] = = key) then
+Step 4 : printf(" Successful at location i")
+Step 5 : found = 1
+Step 6 : Exit
+Step 7 : Else
+Step 8 : i=i+1
+Step 9 : End if
+Step 10 : End while
+Step 11 : If (found = = 0) then
+Step 12 : printf(" Search unsuccessful")
+Step 13 : end if
+Step 14 : STOP
+
+
+
+

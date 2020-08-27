@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<conio.h>
+void main ()
+{
+int a[5],i,x,t,found=0;
+
+printf("\n Enter the array");
+for(i=0;i<5;i++)
+{
+scanf("%d",&a[i]);
+}
+ i=0;
+printf("\n Enter the element to be search");
+scanf("%d",&x);
+while(i<=5&&found==0)
+{
+if(a[i]==x){
+found=1;
+t=i;
+break;
+}
+else{
+i=i+1;
+}
+}
+if(found==0){
+printf("\n search successful");
+getch();
+}
+else{
+printf("\nfound ar %d position",t);
+getch();
+}
+getch();
+}
+
