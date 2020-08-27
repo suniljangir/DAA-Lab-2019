@@ -1,0 +1,10 @@
+Algorithm for Bubble sort
+
+step 1: for(i=1 to (n-1)) do
+step 2: for(j=1 to (n-i))
+step 3: if(a[j]>a[j+1])
+step 4: swap(a[j],a[j+1])
+step 5: end if
+step 6: end for
+step 7: end for
+step 8: STOP
