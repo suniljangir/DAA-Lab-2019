@@ -1,0 +1,79 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<alloc.h>
+struct node
+{int data;
+ struct node *link;
+};
+node *head;
+void swap(node *pt1,node *pt2)
+{int temp;
+temp=pt1->data;
+pt1->data=pt2->data;
+pt2->data=temp;
+}
+void select_sort(node *head)
+{ node *begin=head;
+  node *l;
+node *min;
+while(begin->link)
+{min=begin;
+l=begin->link;
+while(l)
+{ if(min->data  >  l->data)
+ { min=l;
+ }
+l=l->link;
+}
+swap(begin,min);
+begin=begin->link;
+}
+}
+void insert_front()
+{int a;
+  node *n;
+printf("\n enter the data");
+scanf("%d",&a);
+if (head==NULL)
+{ n=(node*)malloc(sizeof(struct node));
+  n->data=a;
+  n->link=NULL;
+  head=n;
+}
+else
+{n=(node*)malloc(sizeof(struct node));
+  n->data=a;
+  n->link=head;
+  head=n;
+}
+}
+void traverse()
+{select_sort(head);
+  node *p;
+  printf("\n");
+  p=head;
+while(p!=NULL)
+{printf("%d->\t",p->data);
+  p=p->link;
+}
+getch():
+}
+void main()
+{clrscr();
+  int c;
+ A: printf("\n MENU");
+      printf("\n 1-insertion");
+      printf("\n 2-traverse");
+      printf("\n 3-exit");
+      printf("\n enter the choice");
+      scanf("%d",&c);
+     switch(c)
+{ case 1: insert_front();
+		goto A;
+   case 2: traverse();
+		goto A;
+   case 3: exit(0);
+}
+getch();
+}
