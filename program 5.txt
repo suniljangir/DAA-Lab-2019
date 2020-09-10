@@ -1,0 +1,71 @@
+PROGRAM 5
+
+5. Write an algorithm and program to sort n numbers    using Insertion sort technique.
+i) Using arrays
+
+#include<stdio.h> 
+#include<conio.h> 
+int a[7]; 
+main() 
+{ 
+ int i, j,k; 
+ int l=0,u=6; 
+ int key; 
+ j=1; 
+ clrscr(); 
+ printf("\nEnter 7 values as input to array:"); 
+ for(k=0;k<=6;k++) 
+     scanf("%d", &a[k]); 
+ while(j<=u) 
+ { 
+   key=a[j]; 
+   i=j-1; 
+   while((i>-1) && (a[i] >key)) 
+    { 
+       a[i+1]=a[i]; 
+       i=i-1; 
+    } 
+   a[i+1]=key; 
+   j=j+1; 
+   printf("\n"); 
+   for(k=0;k<=6;k++) 
+       printf("%d\t", a[k]); 
+} 
+getch(); 
+} 
+
+ii) Using recursion
+
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+void IS(int arr[], int n){
+   if (n <= 1)
+      return;
+   IS( arr, n-1 );
+   int a = arr[n-1];
+   int j = n-2;
+   while (j >= 0 && arr[j] >a){
+      arr[j+1] = arr[j];
+      j--;
+   }
+   arr[j+1] = a;
+}
+void main(){
+   clrscr();
+  int i,a[5], n=5;
+     printf("\n enter the elements for array");
+     for(i=0;i<5;i++)
+     scanf("\n %d",&a[i]);
+   printf("Unsorted Array:\t");
+      for (i=0; i < 5; i++)
+   printf("%d ",a[i]);
+
+      IS(a, n);
+
+   printf("\nSorted Array:\t");
+   for (i=0; i < 5; i++)
+      printf("%d ",a[i]);
+ getch();
+}
+
