@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int a[7],k;
+void sort(int a[], int i, int n)
+{
+	int value = a[i];
+	int j = i;
+    while (j > 0 && a[j - 1] > value)
+    {
+        a[j] = a[j - 1];
+		j--;
+	}
+
+	a[j] = value;
+	if (i + 1 <= n)
+    	{
+		sort(a, i + 1, n);
+	}
+}
+int main()
+{
+   system("cls");
+   printf("\n Enter the values:");
+   for(k-0;k<=6;k++)
+   {
+       scanf("%d",&a[k]);
+   }
+	int n = sizeof(a) / sizeof(a[0]);
+
+	sort(a, 1, n - 1);
+        
+	for (int i = 0; i < n; i++)
+    {
+		printf("%d ", a[i]);
+    }
+	return 0;
+}
