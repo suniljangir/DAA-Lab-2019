@@ -1,0 +1,56 @@
+#include<stdio.h>
+#include<conio.h>
+#define MAX 50
+void main()
+{
+int a[MAX], temp[MAX], i, j, k, n, size,x1, y1, x2, y2;
+printf("\n Enter the numbers of elements in the array:");
+scanf("%d", &n);
+for(i=0;i<n;i++)
+{
+printf("\n Enter element %d of the array:", i+1);
+scanf("%d", &a[i]);
+}
+printf("\n Unsorted array is:");
+for(i=0; i<n; i++)
+printf("%d\t", a[i]);
+for(size=1; size<n; size=size*2)
+{
+x1=0;
+k=0;
+while(x1+size<n)
+{
+y1=x1+size-1;
+x2=y1+1;
+y2=x2+size-1;
+if(y2>=n)
+y2=n-1;
+i=x1;
+j=x2;
+while(i<=y1 && j<=y2)
+{
+if(a[i]<=a[j])
+temp[k++]=a[i++];
+else
+temp[k++]=a[j++];
+}
+while(i<=y1)
+temp[k++]=a[i++];
+while(j<=y2)
+temp[k++]=a[i++];
+x1=y2+1;
+}
+for(i=x1; k<n; i++)
+temp[k++]=a[i];
+for(i=0; i<n; i++)
+a[i]=temp[i];
+printf("\n size=%d \nElements are:", size);
+for(i=0;i<n;i++)
+printf("%d", a[i]);
+}
+printf("\n Sorted array:");
+for(i=0;i<n;i++)
+printf("%d", a[i]);
+printf("\n");
+getch();
+}
