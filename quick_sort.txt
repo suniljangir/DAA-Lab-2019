@@ -1,0 +1,53 @@
+	#include<stdio.h>
+	#include<conio.h>
+	#include<stdlib.h>
+	int a[7];
+	int partition(int p,int r)
+	{
+	int i,j,x,temp,k;
+	x=a[r];
+	i=p-1;
+	for(j=p;j<=r-1;j++)
+	{
+		if(a[j]<=x)
+		{
+			i=i+1;
+			temp=a[i];
+			a[i]=a[j];
+			a[j]=temp;
+}
+}
+temp=a[i+1];
+a[i+1]=a[r];
+a[r]=temp;
+printf("\n");
+for(k=0;k<=6;k++)
+{
+printf("%d \t",a[k]);
+}
+getch();
+return(i+1);
+}
+quicksort(int p,int r)
+{
+int q;
+if(p<r)
+{
+q=partition(p,r);
+quicksort(p,q-1);
+quicksort(q+1,r);
+}
+}
+main()
+{
+int i,p,r;
+p=0;
+r=6;
+clrscr();
+printf("\n Enter the values:");
+for(i=0;i<=6;i++)
+{
+scanf("%d",&a[i]);
+}
+quicksort(p,r);
+}
