@@ -1,0 +1,8 @@
+Best case:
+T(n)=omega(n square)
+
+Worst case:
+T(n)=Big O(n square)
+
+Average case:
+T(n)=Theta (n square)

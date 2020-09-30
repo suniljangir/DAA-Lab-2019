@@ -1,0 +1,8 @@
+Step 1: For(i=1 to (n-1)) do
+Step 2: For(j=1 to n-i)
+Step 3: If (a[j] > a[j+1] )then
+Step 4: Swap (a[j], a[j+1] )
+Step 5: End if
+Step 6: End for
+Step 7: End for
+Step 8: STOP

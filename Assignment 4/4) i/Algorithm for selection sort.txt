@@ -1,0 +1,20 @@
+Step 1: for(i=1 to n-1) do 
+Step 2: j=Selection_Min(i,n)
+Step 3: if (i!=j) then
+Step 4: SWAP (A[i],A[j])
+Step 5: end if
+Step 6: end for
+Step 7: STOP
+
+
+Select_Min(i,n):
+Step 1: Min =A[L]
+Step 2: MinLoc = L
+Step 3: for i=L+1 to R do
+Step 4: If (Min >A[i]) then
+Step 5: Min=A[i]
+Step 6:MinLoc=i
+Step 7:End if
+Step 8:End for
+Step 9: RETURN (MinLoc)
+Step 10: STOP

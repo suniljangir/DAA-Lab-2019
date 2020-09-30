@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+int a[7];
+int select_min(int L,int R)
+{
+ int min,minloc,i;
+min=a[L];
+minloc=L;
+for(i=L+1;i<=R;i++)
+{
+if(min>a[i])
+{
+min=a[i];
+minloc=i;
+ }
+}
+return(minloc);
+}
+void main()
+{
+int i,j,k,temp;
+int l=0,u=6;
+clrscr();
+printf("\n Enter the values:");
+for(k=0;k<=6;k++)
+{
+scanf("%d",&a[k]);
+}
+for(i=0;i<u-1;i++)
+{
+j=select_min(i,u);
+if(i!=j)
+{
+temp=a[i];
+a[i]=a[j];
+a[j]=temp;
+}
+printf("\n");
+}
+for(k=0;k<=6;k++)
+{
+printf("%d",a[k]);
+}
+getch();
+}
