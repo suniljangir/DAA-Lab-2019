@@ -1,0 +1,66 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+int a[7];
+void merge(int,int,int);
+void mergesort(int,int);
+void merge(int p,int q,int r)
+{
+int i,j,k,n1,n2,L[7],R[7];
+n1=(q-p+1);
+n2=(r-q);
+ L[n1+1];
+ R[n2+1];
+ L[n1+1]=32767;
+ R[n2+1]=32767;
+for(i=1;i<=n1;i++)
+{
+L[i]=a[p+i-1];
+}
+for(j=1;j<=n2;j++)
+{
+R[j]=a[q+j];
+}
+i=1,j=1;
+for(k=p;k<=r;k++)
+{
+if(L[i]<=R[j])
+{
+a[k]=L[i];
+i++;
+}
+else
+{
+a[k]=R[j];
+j++;
+}
+}
+}
+void mergesort(int p,int r)
+{
+int q,i;
+if(p<r)
+{
+q=((p+r)/2);
+mergesort(p,q);
+mergesort(q+1,r);
+merge(p,q,r);
+}
+printf("\n Sorted array:");
+for(i=1;i<8;i++)
+{
+printf("\t %d",a[i]);
+}
+}
+void main()
+{
+int i,p=1,r=7,q;
+system("cls");
+printf("Enter the values:");
+for(i=1;i<8;i++)
+{
+scanf("%d",&a[i]);
+}
+mergesort(p,r);
+getch();
+}
