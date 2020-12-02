@@ -1,0 +1,137 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+struct node{
+int data;
+struct node *next;
+};
+int x=0;
+struct node *head, *n;
+void insert(){
+struct node *ptr;
+ptr=head;
+n= (struct node *)malloc(sizeof(struct node));
+n->next=NULL;
+printf("\n Enter the element:");
+scanf("%d", &n->data);
+if(head==NULL){
+head=n;
+}
+else{
+while(ptr->next!=NULL){
+ptr=ptr->next;
+}
+ptr->next=n;
+}
+x++;
+}
+void traverse(){
+struct node *ptr;
+ptr=head;
+if(head==NULL){
+printf("\n The list is empty");
+}
+else{
+while(ptr!=NULL){
+printf("%d ->", ptr->data);
+ptr=ptr->next;
+}
+}
+getch();
+}
+int partition(int p, int r){
+struct node *ptr, *p1, *p2;
+int y, t, z, temp, a=1, u=1, b=1;
+p2=NULL;
+p1=head;
+ptr=head;
+y=p;
+temp=r;
+z=1;
+while(z<y){
+p1=p1->next;
+z++;
+}
+while(temp>1){
+ptr=ptr->next;
+temp--;
+}
+while(p1!=ptr){
+if(p1->data<=ptr->data){
+if(p2==NULL && p==1){
+p2=head;
+}
+else if(p2==NULL && p!=1){
+p2=head;
+while(u<p){
+p2=p2->next;
+u++;
+}
+}
+else{
+p2=p2->next;
+}
+t=p1->data;
+p1->data=p2->data;
+p2->data=t;
+}
+p1=p1->next;
+}
+if(p2==NULL){
+p2=head;
+while(b<p){
+p2=p2->next;
+b++;
+}
+}
+else{
+p2=p2->next;
+}
+t=ptr->data;
+ptr->data=p2->data;
+p2->data=t;
+ptr=head;
+while(ptr!=p2){
+a++;
+ptr=ptr->next;
+}
+return a;
+}
+void quick_sort(int p, int r){
+int q;
+if(head==NULL){
+printf("\n The list is empty");
+getch();
+}
+else{
+if(p<r)
+{
+q=partition(p,r);
+quick_sort(p, q-1);
+quick_sort(q+1, r);
+}
+}
+}
+void main(){
+int ch;
+L:system("cls");
+printf("\n 1. Insertion");
+printf("\n 2. Traversal ");
+printf("\n 3. Sorting");
+printf("\n 4. Exit");
+printf("\n Enter the operation you want to perform:");
+scanf("%d", &ch);
+switch(ch){
+case 1: insert();
+	goto L;
+case 2: traverse();
+	goto L;
+case 3: quick_sort(1, x);
+	goto L;
+case 4: exit(0);
+default:
+printf("\n Invalid choice");
+getch();
+goto L;
+}
+}
