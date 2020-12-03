@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<time.h>
+#include<conio.h>
+int KS(float capacity, int n, float weight[], float profit[])
+{
+float a[20], totalProfit, b;
+int i, j;
+b= capacity;
+totalProfit=0;
+for(i=0;i<n;i++)
+a[i]=0.0;
+for(i=0;i<n;i++)
+{
+if(weight[i]>b)
+break;
+else
+{
+a[i]=1.0;
+totalProfit=totalProfit+profit[i];
+b=b-weight[i];
+}
+}
+if(i<n)
+a[i]=b/weight[i];
+totalProfit=totalProfit+(a[i]*profit[i]);
+printf(" Selected elements are:");
+for(i=0; i<n; i++)
+if(a[i]==1.0)
+printf("\n Profit is %f with weight %f", profit[i], weight[i]);
+else if(a[i]>0.0)
+printf("\n %f part of profit %f with weight %f", a[i], profit[i], weight[i]);
+printf("\n Total Profit for %d objects with capacity %f=%f\n\n", n, capacity, totalProfit);
+getch();
+}
+int main()
+{
+float weight[20], profit[20], r[20], t1, t2, t3;
+int n;
+time_t start, stop;
+float capacity;
+int i, j;
+printf("\n enter the number of objects:");
+scanf("%d", &n);
+printf("\n enter the capacity of knapsack:");
+scanf("%f", &capacity);
+for(i=0; i<n; i++)
+{
+printf("\n Enter %d(th) profit:",(i+1));
+scanf("%f", &profit[i]);
+printf("Enter %d (th) weight:", (i+1));
+scanf("%f", &weight[i]);
+r[i]=profit[i]/weight[i];
+}
+start=time(NULL);
+for(i=0; i<n; i++)
+for(j=0; j<n; j++)
+{
+if(r[i]>r[j])
+{
+t1=r[i];
+r[i]=r[j];
+r[j]=t1;
+t2=weight[i];
+weight[i]=weight[j];
+weight[j]=t2;
+t3=profit[i];
+profit[i]=profit[j];
+profit[j]=t3;
+}
+}
+KS(capacity, n, weight, profit);
+stop=time(NULL);
+printf("\n Knapsack =%f", difftime(stop, start));
+return 0;
+}
