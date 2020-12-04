@@ -1,0 +1,154 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<conio.h>
+struct hash *hashTable=NULL;
+int elementCount = 0;
+struct node{
+int key;
+struct node *next;
+};
+struct hash{
+struct node *head;
+int count;
+};
+struct node * createNode(int key)
+{
+struct node *newNode;
+newNode=(struct node *)malloc(sizeof(struct node));
+newNode->key = key;
+newNode->next=NULL;
+return newNode;
+}
+void insertion(int key)
+{
+int hashIndex = key % elementCount;
+struct node *newNode= createNode(key);
+if(!hashTable[hashIndex].head)
+{
+hashTable[hashIndex].head=newNode;
+hashTable[hashIndex].count=1;
+return;
+}
+newNode->next=(hashTable[hashIndex].head);
+hashTable[hashIndex].head=newNode;
+hashTable[hashIndex].count++;
+return;
+}
+void deletion(int key)
+{
+int hashIndex=key%elementCount, flag=0;
+struct node *temp, *myNode;
+myNode=hashTable[hashIndex].head;
+if(!myNode)
+{
+printf("Given data is not present in hash table.");
+return;
+}
+temp = myNode;
+while(myNode!=NULL)
+{
+if(myNode->key==key)
+{
+flag=1;
+if(myNode==hashTable[hashIndex].head)
+hashTable[hashIndex].head=myNode->next;
+else
+temp->next=myNode->next;
+hashTable[hashIndex].count--;
+free(myNode);
+break;
+}
+temp=myNode;
+myNode=myNode->next;
+}
+if(flag)
+printf("Data deleted from hash table successfully");
+else
+printf("Given data is not present in hash table");
+return;
+}
+void search(int key)
+{
+int hashIndex=key%elementCount, flag=0;
+struct node *myNode;
+myNode=hashTable[hashIndex].head;
+if(!myNode)
+{
+printf("Element is not present in the hash table");
+return;
+}
+while(myNode!=NULL)
+{
+if(myNode->key==key)
+{
+printf("Key Found: %d", myNode->key);
+flag=1;
+break;
+}
+myNode=myNode->next;
+}
+if(!flag)
+printf("Element is not present in the hash table");
+return;
+}
+void display()
+{
+struct node *myNode;
+int i;
+for(i=0; i<elementCount; i++)
+{
+if(hashTable[i].count==0)
+continue;
+myNode=hashTable[i].head;
+if(!myNode)
+continue;
+printf("Data at index %d in hash table:", i);
+while(myNode!=NULL)
+{
+printf("%-12d", myNode->key);
+myNode=myNode->next;
+}
+}
+return;
+}
+void main()
+{
+int n, key, ch;
+printf("\n Enter the number of elements:");
+scanf("%d", &n);
+elementCount=n;
+hashTable=(struct hash *)calloc(n, sizeof(struct hash));
+while(1)
+{
+printf("\n 1. Insertion");
+printf("\n 2. Deletion");
+printf("\n 3. Searching");
+printf("\n 4. Display");
+printf("\n 5. Exit");
+printf("\n Enter your choice:");
+scanf("%d", &ch);
+switch(ch)
+{
+case 1: printf("\n Enter the key value:");
+	scanf("%d", &key);
+	getchar();
+	insertion(key);
+	break;
+case 2: printf("\n Enter the key to perform deletion:");
+	scanf("%d", &key);
+	deletion(key);
+	break;
+case 3: printf("\n Enter the key to search:");
+	scanf("%d", &key);
+	search(key);
+	break;
+case 4: display();
+	break;
+case 5: exit(0);
+default: printf("Wrong Option");
+	 break;
+}
+}
+getch();
+}

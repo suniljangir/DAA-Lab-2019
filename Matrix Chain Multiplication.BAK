@@ -1,0 +1,75 @@
+#include<stdio.h>
+#include<conio.h>
+#define INFY 999999999
+long int x[20][20];
+int y[20][20];
+int z[20], i, j, n;
+void optimal(int i, int j)
+{
+if(i==j)
+printf("A%d", i);
+else
+{
+printf("(");
+optimal(i, y[i][j]);
+optimal(y[i][j]+1, j);
+printf(")");
+}
+}
+void multiply(void)
+{
+long int r;
+int k;
+for(i=n; i>0; i--)
+{
+for(j=i; j<=n; j++)
+{
+if(i==j)
+x[i][j]=0;
+else
+{
+for(k=i; k<j; k++)
+{
+r=x[i][k]+x[k+1][j]+z[i-1]*z[k]*z[j];
+if(r<x[i][j])
+{
+x[i][j]=r;
+y[i][j]=k;
+}
+}
+}
+}
+}
+}
+void main()
+{
+int k;
+printf("\n Enter the no. of elemets:");
+scanf("%d", &n);
+for(i=1; i<=n; i++)
+for(j=i+1; j<=n; j++)
+{
+x[i][i]=0;
+x[i][j]=INFY;
+y[i][j]=0;
+}
+printf("\n Enter dimensions:");
+for(k=0; k<=n; k++)
+{
+printf("P%d:", k);
+scanf("%d", &z[k]);
+}
+multiply();
+printf("\n Cost Matrix M:");
+for(i=1; i<=n; i++)
+for(j=i; j<=n; j++)
+printf("m[%d][%d]:%ld", i, j, x[i][j]);
+printf("\n Matrix S for k values:");
+for(i=1; i<=n; i++)
+for(j=i; j<=n; j++)
+printf("m[%d][%d]:%d",i, j, y[i][j]);
+i=1, j=n;
+printf("\n Multiplication Sequence:");
+optimal(i, j);
+getch();
+}
